@@ -6,24 +6,24 @@ import prisma from "@/db";
 export async function POST(request: Request) {
   const auth = getAuth();
 
-  if (!(await auth.isSignedIn())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  // if (!(await auth.isSignedIn())) {
+  //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // }
 
-  const user = await auth.user();
-  const userId = String(user?.id || "");
+  // const user = await auth.user();
+  // const userId = String(user?.id || "");
 
-  const sub = await auth.subscription();
+  // const sub = await auth.subscription();
 
-  const editCount = sub ? await prisma.edit.count({ where: { userId } }) : 0;
-  const canEditImages = sub?.plan.parameters.edits > editCount;
+  // const editCount = sub ? await prisma.edit.count({ where: { userId } }) : 0;
+  // const canEditImages = sub?.plan.parameters.edits > editCount;
 
-  if (!canEditImages) {
-    return NextResponse.json(
-      { error: "Edit quota exceeded." },
-      { status: 429 }
-    );
-  }
+  // if (!canEditImages) {
+  //   return NextResponse.json(
+  //     { error: "Edit quota exceeded." },
+  //     { status: 429 }
+  //   );
+  // }
 
   const apiKey = process.env.OPENAI_KEY;
   const formData = await request.formData();

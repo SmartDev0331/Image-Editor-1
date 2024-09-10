@@ -47,7 +47,7 @@ export default async function Home() {
           </div>
         </div>
 
-        {sub ? (
+        {!sub ? (
           <ImageEditor
             canGenerateEdits={canEditImages}
             createEdit={createEdit}

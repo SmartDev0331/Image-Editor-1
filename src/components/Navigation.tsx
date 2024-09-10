@@ -72,7 +72,7 @@ export default function Navigation({
         {mode === "crop" && <Button onClick={onCrop}>Crop</Button>}
         {mode === "generate" && (
           <>
-            {canGenerateEdit ? (
+            {!canGenerateEdit ? (
               <GenerateImage
                 getImageData={getImageData}
                 getMaskData={getMaskData}

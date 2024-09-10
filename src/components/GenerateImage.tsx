@@ -62,7 +62,7 @@ export default function GenerateImage({
       if (onGenerate) {
         onGenerate(blob, prompt);
       }
-    } catch (e) {}
+    } catch (e) { console.log('error------->', e) }
 
     onGenerateEnd && onGenerateEnd();
   };
